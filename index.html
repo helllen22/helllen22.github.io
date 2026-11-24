@@ -271,7 +271,7 @@ mount(document.querySelector('[data-group=career]'),EX,true);
 mount(document.querySelector('[data-group=projects]'),PJ);
 /* deck modal */
 const dlg=document.getElementById('deck'),dtrack=document.getElementById('dtrack'),dd=document.getElementById('ddots'),dn=document.getElementById('dn');
-dtrack.innerHTML=Array.from({length:13},(_,k)=>`<img src="slides/s${String(k+1).padStart(2,'0')}.jpg" alt="포트폴리오 슬라이드 ${k+1}" loading="lazy" width="1440" height="810">`).join('');
+dtrack.innerHTML=Array.from({length:13},(_,k)=>`<img src="slides/s${String(k+1).padStart(2,'0')}.jpg?v=20261124b" alt="포트폴리오 슬라이드 ${k+1}" loading="lazy" width="1440" height="810">`).join('');
 let di=0;function dset(){dd.innerHTML=Array.from({length:13},(_,k)=>`<i class="${k===di?'on':''}" data-k="${k}" role="button" aria-label="슬라이드 ${k+1}"></i>`).join('');dn.textContent=di+1;document.getElementById('dprev').disabled=di===0;document.getElementById('dnext').disabled=di===12;}
 function dgo(k){di=Math.max(0,Math.min(12,k));const im=dtrack.children[di];dtrack.scrollTo({left:im?im.offsetLeft:dtrack.clientWidth*di,behavior:'smooth'});dset();}
 function openDeck(){try{dlg.showModal();}catch(e){dlg.setAttribute('open','');}di=0;dtrack.scrollLeft=0;dset();}
