@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이찬미 | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: 채용 담당자가 3분 안에 훑는 차분하고 단정한 개인 포트폴리오
+   IDEA: 차콜 바탕에 반투명 막대·선·도넛 차트
+   PICTURE: 히어로의 반투명 차트 배경, 카드마다 열리는 상황·실행·결과 슬라이드
+   COLOUR/TYPE: 웜 아이보리 · 차콜 · 딥 버건디 / Noto Serif KR 제목 + Noto Sans KR 본문
+   LAYOUT: 헤더 → 히어로 → 경력 카드 4장 → 프로젝트 카드 3장 → 연락처 → 푸터 */
+:root{color-scheme:light dark;
+--bg:light-dark(#F8F5F1,#17151a);--bg2:light-dark(#F1ECE6,#211e24);--card:light-dark(#FFFFFF,#26222a);
+--ink:light-dark(#242426,#f1ece6);--mute:light-dark(#7d7673,#b3aaa6);--line:light-dark(#E9E3DF,#3a343d);
+--bur:light-dark(#6B1F35,#d27a92);--burbg:#6B1F35;--n1:light-dark(#E2DBD4,#3d3740);--n2:light-dark(#BDB4AC,#6b6268);
+--sh:0 8px 30px rgba(0,0,0,.06);--serif:"Noto Serif KR",serif}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Noto Sans KR",system-ui,sans-serif;overflow-x:clip;word-break:keep-all;overflow-wrap:anywhere}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 max(4vw,18px)}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;flex-wrap:wrap}
+.brand{font-weight:700;text-decoration:none}
+nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--mute);padding:8px 10px;border-radius:999px;font-size:15px}
+nav a:hover{color:var(--ink)}
+.btn{font:inherit;font-size:15px;font-weight:700;border:1px solid var(--line);background:var(--card);color:var(--bur);border-radius:999px;padding:9px 18px;cursor:pointer;min-height:40px}
+.btn:focus-visible,.ex:focus-visible,nav a:focus-visible{outline:2px solid var(--bur);outline-offset:3px}
+.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(115deg,#1f1b1e 0%,#2b2327 60%,#3a252d 100%)}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{position:relative}
+.hero .wrap{display:block;padding-top:clamp(40px,6vw,84px);padding-bottom:clamp(40px,6vw,84px)}
+.hero h1{font-family:var(--serif);font-size:clamp(28px,3.4vw,42px);line-height:1.2;margin:0 0 14px;text-wrap:balance;letter-spacing:-.02em}
+.hero p{margin:0 0 20px;color:#e6dcd9;font-size:16px;max-width:34em}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:40px;max-width:900px}
+.stats div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:14px 16px;backdrop-filter:blur(6px)}
+.stats b{display:block;font-size:clamp(20px,2.4vw,28px);font-weight:800;white-space:nowrap}
+.stats span{font-size:13px;color:#efe6e3}
+.hero small.cr{display:block;margin-top:18px;font-size:12px;color:rgba(255,255,255,.6)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:500}
+.fig{position:relative;min-height:320px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:24px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.band{padding:clamp(48px,7vw,96px) 0}
+.kick{font-size:14px;font-weight:700;color:var(--bur);margin:0 0 8px}
+h2{font-family:var(--serif);font-size:clamp(28px,3.4vw,40px);line-height:1.2;margin:0 0 10px;letter-spacing:-.02em}
+.lead{color:var(--mute);margin:0 0 32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:18px}
+[data-group=career] .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+[data-group=career] .ex .m,[data-group=projects] .ex .m{font-size:23px;font-weight:500}
+@media(max-width:1060px){[data-group=career] .grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){[data-group=career] .grid{grid-template-columns:minmax(0,1fr)}}
+[data-group=career] .ex .m,[data-group=projects] .ex .m{font-size:23px;font-weight:500}
+.ex{all:unset;box-sizing:border-box;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px 24px 18px;display:flex;flex-direction:column;gap:6px;transition:transform .2s,box-shadow .2s}
+.ex:hover{transform:translateY(-2px);box-shadow:var(--sh)}
+.ex .d{font-size:13px;color:var(--mute);font-weight:500}
+.ex .o{font-size:19px;font-weight:700;line-height:1.35}
+.ex .r{font-size:15px;color:var(--mute)}
+.ex .m{font-size:26px;font-weight:800;color:var(--bur);margin-top:8px;letter-spacing:-.02em;white-space:nowrap}
+.ex .more{display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--line);margin-top:12px;padding-top:12px;font-size:13px;font-weight:700;color:var(--mute)}
+.ex[aria-expanded=true]{background:var(--burbg);color:#f8f1ee;border-color:var(--burbg);box-shadow:var(--sh)}
+.ex[aria-expanded=true] .d,.ex[aria-expanded=true] .r,.ex[aria-expanded=true] .more{color:#e9d8dc}
+.ex[aria-expanded=true] .m{color:#fff}
+.panel{margin-top:22px;background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);overflow:hidden}
+.panel[hidden]{display:none}
+.ph{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 24px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.ph b{display:block}.ph small{color:var(--mute)}
+.pill{background:var(--bg2);color:var(--bur);font-weight:700;font-size:14px;border-radius:999px;padding:6px 14px;white-space:nowrap}
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.sl{flex:0 0 100%;scroll-snap-align:start;padding:clamp(22px,3.5vw,44px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(20px,3vw,44px);align-items:center;min-height:380px}
+.sl.one{grid-template-columns:minmax(0,1fr)}
+.sl h3{font-size:24px;line-height:1.35;margin:4px 0 14px}
+.sl ul{margin:0;padding-left:20px}.sl li{margin:6px 0}
+.st{font-size:13px;font-weight:700;color:var(--bur)}
+.note{font-size:13px;color:var(--mute);margin-top:14px}
+.vis{background:var(--bg2);border-radius:18px;padding:22px}
+.shot{border-radius:14px;border:1px solid var(--line);background:#fff;width:100%;height:auto}
+.cap{font-size:13px;color:var(--mute);margin-top:8px}
+.pf{display:flex;justify-content:space-between;align-items:center;padding:12px 24px;border-top:1px solid var(--line);gap:12px}
+.nb{font:inherit;font-weight:700;background:none;border:0;color:var(--ink);cursor:pointer;min-height:44px;padding:0 6px}
+.nb:disabled{color:var(--n2);cursor:default}
+.dots{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--mute)}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--n1)}.dots i.on{background:var(--bur)}
+.kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.kv div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.kv span{display:block;font-size:13px;color:var(--mute)}.kv b{font-size:22px;white-space:nowrap}
+.big{font-size:clamp(34px,4vw,48px);font-weight:800;color:var(--bur);letter-spacing:-.02em;line-height:1.1;white-space:nowrap}
+.bar{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;align-items:center;margin:10px 0;font-size:14px}
+.bar div{height:30px;border-radius:8px;background:var(--n1);position:relative}
+.bar div i{position:absolute;inset:0 auto 0 0;border-radius:8px;background:var(--n2)}
+.bar div i.on{background:var(--bur)}
+.bar div em{position:absolute;right:10px;top:4px;font-style:normal;font-weight:700;font-size:14px}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.steps div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;font-size:13px;color:var(--mute)}
+.steps div b{display:block;color:var(--ink);font-size:15px}
+.steps div.me{border:2px solid var(--bur)}.steps div.me b{color:var(--bur)}
+.side{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,4vw,44px)}
+.side img{border-radius:24px;border:1px solid var(--line);box-shadow:var(--sh)}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;align-items:center}
+.flow span{background:var(--bg2);border-radius:12px;padding:8px 14px;font-weight:700;font-size:14px}
+.flow span.on{background:var(--burbg);color:#fff}.flow em{color:var(--n2);font-style:normal}
+.contact .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.contact h2{margin:0}.contact .ln{text-align:right;font-size:18px;font-weight:700;line-height:1.8}
+footer{border-top:1px solid var(--line);padding:22px 0;font-size:13px;color:var(--mute)}
+dialog{border:0;padding:0;border-radius:22px;width:min(1100px,94vw);background:var(--card);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(23,21,26,.6)}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);font-weight:700}
+.dh .x{font:inherit;font-size:20px;background:none;border:0;color:var(--ink);cursor:pointer;width:44px;height:44px}
+.dtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;background:#111;scrollbar-width:none}
+.dtrack img{flex:0 0 100%;scroll-snap-align:start;width:100%;aspect-ratio:16/9;object-fit:contain}
+
+.sl{height:340px;min-height:0;padding:24px 36px;gap:32px;overflow:hidden}
+.sl h3{font-size:21px;margin:4px 0 10px}
+.sl li{margin:4px 0;font-size:15px;line-height:1.55}
+.vis{padding:16px 18px;max-height:100%;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.vis .shot{max-height:236px;width:auto;max-width:100%;object-fit:contain;margin:0 auto}
+.vis .big{font-size:34px}
+.vis .bar{margin:6px 0}.vis .bar div{height:24px}.vis .bar div em{top:2px;font-size:13px}
+.vis .kv{margin-top:8px}.vis .kv div{padding:8px 12px}.vis .kv b{font-size:18px}
+.vis .steps div{padding:7px 9px}.vis .steps div b{font-size:14px}
+.vis .cap{margin-top:6px}
+.ph{padding:12px 22px}.pf{padding:6px 22px}
+.ex{min-height:100%}
+@media(max-width:860px){.sl{height:auto;min-height:0}.vis .shot{max-height:260px}}
+@media(max-width:860px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.sl{grid-template-columns:minmax(0,1fr)}.side{grid-template-columns:minmax(0,1fr)}.side img{max-width:240px;margin:0 auto}}
+.hero .wrap{padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(40px,5vw,64px)}
+@media(max-width:720px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.contact .ln{text-align:left}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ex{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="brand" href="#intro">이찬미 · 포트폴리오</a>
+<nav><a href="#intro">소개</a><a href="#experience">경력</a><a href="#projects">프로젝트</a><a href="#contact">연락처</a><button class="btn" id="openDeck" type="button">포트폴리오 PPT 보기</button></nav>
+</div></header>
+
+<section class="hero" id="intro">
+<svg class="bg" viewBox="0 0 1200 360" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+<g stroke="#fff" stroke-opacity=".06"><line x1="560" x2="1200" y1="40" y2="40"/><line x1="560" x2="1200" y1="80" y2="80"/><line x1="560" x2="1200" y1="120" y2="120"/><line x1="560" x2="1200" y1="160" y2="160"/><line x1="560" x2="1200" y1="200" y2="200"/><line x1="560" x2="1200" y1="240" y2="240"/><line x1="560" x2="1200" y1="280" y2="280"/><line x1="560" x2="1200" y1="320" y2="320"/><line y1="0" y2="360" x1="600" x2="600"/><line y1="0" y2="360" x1="680" x2="680"/><line y1="0" y2="360" x1="760" x2="760"/><line y1="0" y2="360" x1="840" x2="840"/><line y1="0" y2="360" x1="920" x2="920"/><line y1="0" y2="360" x1="1000" x2="1000"/><line y1="0" y2="360" x1="1080" x2="1080"/><line y1="0" y2="360" x1="1160" x2="1160"/></g>
+<g fill="#fff" fill-opacity=".07"><rect x="620" y="260" width="34" height="70" rx="6"/><rect x="678" y="235" width="34" height="95" rx="6"/><rect x="736" y="242" width="34" height="88" rx="6"/><rect x="794" y="200" width="34" height="130" rx="6"/><rect x="852" y="210" width="34" height="120" rx="6"/><rect x="910" y="165" width="34" height="165" rx="6"/><rect x="968" y="180" width="34" height="150" rx="6"/><rect x="1026" y="130" width="34" height="200" rx="6"/><rect x="1084" y="140" width="34" height="190" rx="6"/><rect x="1142" y="90" width="34" height="240" rx="6"/></g>
+<polyline points="637,250 695,232 753,240 811,196 869,206 927,168 985,178 1043,130 1101,138 1159,92" fill="none" stroke="#d27a92" stroke-opacity=".55" stroke-width="3" stroke-linejoin="round"/>
+<g fill="#d27a92" fill-opacity=".7"><circle cx="637" cy="250" r="4.5"/><circle cx="695" cy="232" r="4.5"/><circle cx="753" cy="240" r="4.5"/><circle cx="811" cy="196" r="4.5"/><circle cx="869" cy="206" r="4.5"/><circle cx="927" cy="168" r="4.5"/><circle cx="985" cy="178" r="4.5"/><circle cx="1043" cy="130" r="4.5"/><circle cx="1101" cy="138" r="4.5"/><circle cx="1159" cy="92" r="4.5"/></g>
+<g transform="translate(760 105)"><circle r="44" fill="none" stroke="#fff" stroke-opacity=".08" stroke-width="12"/><circle r="44" fill="none" stroke="#d27a92" stroke-opacity=".5" stroke-width="12" stroke-dasharray="260 277" transform="rotate(-90)" stroke-linecap="round"/></g>
+</svg>
+<div class="wrap">
+<div>
+<h1>사람을 이해하는 운영,<br>데이터와 AI로 완성하다.</h1>
+<p>교육 현장과 고객경험 운영에서 쌓은 사람에 대한 이해를,<br>데이터와 AI로 기준을 세우는 힘으로 바꿔 왔습니다.</p>
+<div class="tags"><span class="tag">Apple · Kia 고객경험 운영</span><span class="tag">공동창업 · 운영이사</span><span class="tag">AI 데이터 품질 프로젝트</span></div>
+</div>
+</div></section>
+
+<section class="band" id="experience"><div class="wrap">
+<p class="kick">Career</p>
+<h2>교육 현장에서 고객·운영 문제까지</h2>
+<p class="lead">자리는 달랐지만 반복되는 문제를 묶고, 기준을 세워 데이터로 확인했습니다.<br>카드를 선택하면 상황부터 결과까지 볼 수 있습니다.</p>
+<div data-group="career"></div>
+</div></section>
+
+<section class="band" id="projects" style="padding-top:0"><div class="wrap">
+<p class="kick">Projects</p>
+<h2>스스로 배우고 즉시 실행하는 추진력</h2>
+<p class="lead">AI 부트캠프 프로젝트와, 모임을 운영하며 만든 프로젝트를 소개합니다.</p>
+<div data-group="projects"></div>
+</div></section>
+
+<section class="band contact" id="contact" style="border-top:1px solid var(--line)"><div class="wrap">
+<div><p class="kick">Contact</p><h2>이찬미</h2><p class="lead" style="margin:4px 0 0">교육 · 고객경험 운영 · 데이터 분석 · AI 활용</p></div>
+<div class="ln"><a href="mailto:dl4157@naver.com">dl4157@naver.com</a><br>010-4449-1444</div>
+</div></section>
+
+<footer><div class="wrap">© 2026 이찬미. 수치는 이력서·경력기술서와 프로젝트 기록을 기준으로 했으며, 고객·참여자 개인정보는 포함하지 않았습니다.</div></footer>
+
+<dialog id="deck"><div class="dh"><span>포트폴리오 프레젠테이션 · <span id="dn">1</span> / 13</span><button class="x" id="dclose" type="button" aria-label="닫기">✕</button></div>
+<div class="dtrack" id="dtrack"></div>
+<div class="pf"><button class="nb" id="dprev" type="button">← 이전</button><div class="dots" id="ddots"></div><button class="nb" id="dnext" type="button">다음 →</button></div></dialog>
+
+<script>
+{
+const bar=(rows)=>rows.map(([l,v,max,on,txt])=>`<div class="bar"><span>${l}</span><div><i class="${on?'on':''}" style="width:${Math.max(4,v/max*100)}%"></i><em style="${on?'color:#fff':''}">${txt}</em></div></div>`).join('');
+const kv=(arr)=>`<div class="kv">${arr.map(([a,b])=>`<div><span>${a}</span><b>${b}</b></div>`).join('')}</div>`;
+const S=(stage,title,items,vis,note)=>({stage,title,items,vis,note});
+const EX=[
+{d:'2016.03 – 2020.02',o:'유아교육기관 · 부장교사',r:'300명 규모 교육과정과 학부모 소통',m:'만족도 4.7+',slides:[
+ S('Situation','300명 규모 교육과정을 계획대로',['13개 학급 · 원아 약 300명 교육과정','연 40개 정규·특별 프로그램 운영','학부모의 다양한 요구에 일관된 대응 필요']),
+ S('Action','기준을 맞추고 사람 사이를 조율',['교사 20명의 업무·일정·역할 조율','운영 이슈 월 30건+ 점검으로 교사 간 기준 통일','정기 상담과 상시 소통, 이슈는 사실 확인 후 조율'],
+  `<div class="st">학부모 만족도</div><div class="big">4.7+ <small style="font-size:20px;color:var(--mute)">/ 5.0</small></div>${bar([['만족도',4.7,5,1,'4.7']])}${kv([['학급','13개'],['조율한 교사','20명']])}`)]},
+{d:'2020.10 – 2023.05',o:'Good BM · 공동창업 · 운영이사',r:'문의·반품 데이터로 운영 사이클 구축',m:'처리 2일 → 1일',slides:[
+ S('Situation','주문은 늘고, 반복 원인은 보이지 않던 때',['월 주문 약 800건 → 1,200건으로 증가','문의·반품·출고 지연 누적','개별 처리만으로는 반복 원인 파악이 어려움']),
+ S('Action','분류하고, 원인을 찾고, 기준을 만들다',['문의·반품 데이터를 20개 카테고리로 분류해 반복 불편 도출','주문–생산–출고 병목 분석, 반복 업무·운영 기준 표준화','고객 피드백·재구매 현황으로 개선 과제 선정']),
+ S('Result','주문 1.5배에도 지연은 절반으로',['제품·서비스 개선 5건 반영','생산비 약 10% 절감','누적 고객 약 1,000명 기준 재구매율 50~60% 유지'],
+  `${bar([['주문 전',800,1200,0,'800건'],['주문 후',1200,1200,0,'1,200건'],['지연 전',20,20,0,'20건'],['지연 후',10,20,1,'10건']])}${kv([['주문~출고','2일 → 1일'],['월매출','약 3,000만원']])}`)]},
+{d:'2023.10 – 2024.12',o:'Apple Korea · Forum Team',r:'참여자별 니즈를 반영한 Learning Experience 운영',m:'CSAT 4.8+',slides:[
+ S('Situation','목적이 다른 고객, 같은 품질의 경험',['일반 고객부터 교사까지 다양한 참여자','주 약 20회 교육 세션 운영','세션마다 일관된 고객경험 품질 유지 필요']),
+ S('Action','데이터로 운영을 바꾸고 팀과 기준을 맞추다',['약 20개 프로그램의 참여 데이터를 주간·월간 집계 (약 80회)','매일 15분 Daily Download로 유관 팀과 대응 기준 정렬','16개국 Worldwide Meeting 연 약 25회, Vision Pro 5개국 교육 한국 대표']),
+ S('Result','누적 1,300회 세션, 6,500명+ 고객',['데이터와 현장 피드백으로 운영 개선 8건 반영','교육청 승인 교사 약 200명 대상 10차시 프로그램 운영'],
+  `${bar([['CSAT',4.8,5,1,'4.8+'],['교사',5,5,0,'5.0']])}${kv([['누적 세션','약 1,300회'],['누적 고객','6,500명+']])}`)]},
+{d:'2025.06 – 2026.06',o:'Kia · 국내사업본부 CPO사업팀',r:'반복 VOC 유형화와 신규 고객 접점 설계',m:'4.2일 → 1일',slides:[
+ S('Situation','본사로 넘어온 VOC, 길어지는 처리',['1차 고객센터 미해결 VOC 월평균 약 85건 본사 이관','이관 VOC의 30% 이상 추가 확인 필요, 처리 약 4.2일','평택 CXP 개소(2025.11)를 앞두고 운영 흐름 부재']),
+ S('Action','4개 유형과 체크리스트로 처리 기준을',['반복 VOC를 환불·탁송·차량상태·계약/결제 4개 유형으로 분류','유형별 필수 확인항목 체크리스트 정리','고객·계약·차량·현장 정보를 교차 확인하고 유관부서와 조율해 직접 안내','예약 → 차량 준비 → 방문 → 상담 단계별 업무 흐름 구축'],'', '별도 업무로 결제대기 고객 데이터를 매일 확인·보고하고, 원천 데이터 오류를 정비해 임원 보고에 반영했습니다 (2026.04).'),
+ S('Result','처리는 빨라지고, 예약은 늘다',['추가 확인 건 평균 처리기간 단축','평택 CXP 월 방문 예약 12배','차량 미준비·일정 누락 주 4~5건 → 0~1건'],
+  `${bar([['처리 전',4.2,4.2,0,'4.2일'],['처리 후',1,4.2,1,'1일'],['예약 전',10,120,0,'10건'],['예약 후',120,120,1,'120건']])}`)]},
+];
+const PJ=[
+{d:'2026.10 – 2026.11',o:'오호라 네일 트렌드 AI 태깅 · 주간 리포트 자동화',r:'엘리스 AI 부트캠프 · 팀장 · 태깅·모델 담당',m:'적합률 5% → 78%',slides:[
+ S('Situation','AI 분류 결과를 믿을 기준이 없었다',['SNS 네일 사진(실제 수집 97개 계정)을 AI로 분류','사람과 모델의 판정이 달라 결과 신뢰도 검증 필요']),
+ S('Action','정답셋과 판정 기준을 만들다',['2인 교차 판정으로 정답셋 324건 구축','프롬프트 v1 → v5 개선','채택 기준: 재현율 유지 · 정밀도 하락 2%p 이내','주요 오류 원인: 마그넷 · 오로라 · 시럽 간 경계 모호 → 불일치 사례 분석 → 판정 기준 보완 → v5 반영'],
+  `<div class="st">전체 흐름 · 팀 파이프라인</div><div class="steps" style="margin-top:10px"><div><b>수집</b>공개 게시물</div><div><b>정리</b>중복 제거</div><div class="me"><b>사진 태깅</b>컬러 × 디자인</div><div class="me"><b>판정 반영</b>사람이 덮어쓰기</div><div class="me"><b>대표 사진 검수</b>월요일 15~30분</div><div><b>순위 계산</b>계정 비율 7%+</div><div><b>리포트</b>Top 5 · 급상승</div><div><b>메일 발송</b>09:00</div></div><p class="cap">버건디 테두리가 맡은 단계예요.</p>`),
+ S('Result','대표 사진 100건 내부 검수 적합률',['v4 5% → v5 78%, 사전에 정한 통과 기준 70% 달성'],
+  `<div class="big">5% → 78%</div>${bar([['v4',5,100,0,'5%'],['v5',78,100,1,'78%']])}<p class="cap">통과 기준 70% · 모델 정확도가 아닌 사람 검수 적합률</p>`),
+ S('Evidence','사람이 AI 판정을 검수하는 화면',[],`<img class="shot" src="img/review.jpg" alt="대표 사진 검수 페이지 화면 — 네일 사진은 예시 이미지" loading="lazy" width="1600" height="1015"><p class="cap">네일 사진은 원본 자료 대신 넣은 포트폴리오용 예시 이미지입니다.</p>`),
+ S('Evidence','매주 월요일 받아 보는 트렌드 리포트',[],`<img class="shot" src="img/report.jpg" alt="주간 트렌드 리포트 화면" loading="lazy" width="1000" height="1145"><p class="cap">리포트는 팀 결과물이에요.</p>`),
+ S('Evidence','결과는 매주 리포트와 대시보드로',[],`<img class="shot" src="img/dashboard.jpg" alt="트렌드 대시보드 화면 — 네일 사진은 예시 이미지" loading="lazy" width="1800" height="1125"><p class="cap">리포트·대시보드는 팀 결과물이며, 네일 사진은 포트폴리오용 예시 이미지입니다.</p>`)]},
+{d:'2026.09',o:'금융 상담 고객의 추가 상품 가입 예측 · 우선 상담군 선별',r:'엘리스 AI 부트캠프 · 개인 프로젝트 · 20명 중 1위',m:'Recall 0.19 → 0.52',slides:[
+ S('Situation','먼저 상담할 고객을 고르는 기준',['추가 상품 가입 가능성이 높은 고객을 우선 선별할 기준 필요','283건 상담 데이터, 클래스 불균형']),
+ S('Action','성능을 올리고, 스스로 의심하다',['EDA → 가설 → 모델링 → 인사이트, 가설 3~4회 재설계','클래스 불균형 보정 (Recall 0.19 → 0.52, F1 0.27 → 0.49)','정답 단서 키워드를 지워 누수 검증 (최종 Recall 0.43 · F1 0.44)','성별 편향이 드러난 군집 모델은 기각'],
+  `<img class="shot" src="img/cs_weight.jpg" alt="클래스 가중치 적용 전후 성능 비교 슬라이드" loading="lazy" width="1400" height="788">`),
+ S('Result','상위 25% 71명을 우선 상담군으로',['점수는 구매 확률이 아니라 상담 우선순위로 해석 범위 명시','20명 중 개별 프로젝트 최종 평가 1위'],
+  `<img class="shot" src="img/cs_leak.jpg" alt="타깃 누수 검증 슬라이드" loading="lazy" width="1400" height="788"><p class="cap">최종 발표 자료 · Python · Pandas · 로지스틱 회귀</p>`)]},
+{d:'Side project',o:'오프라인 모임 신청 · RSVP 자동화 시스템',r:"사이드 프로젝트 '윷자' · 기획부터 구축까지 1인",m:'수기 관리 → 자동 저장',slides:[
+ S('Situation','흩어진 도구, 수작업으로 돌던 운영',['신청·선정·안내·참석 확인이 여러 도구에 흩어짐','참석 여부와 입금 상태를 일일이 수기로 관리']),
+ S('Action','신청부터 RSVP까지 한 흐름으로',['Google Forms 신청 → Sheets 선정 → 초대 웹페이지 → RSVP·입금 상태 저장','Apps Script로 이름·휴대폰 뒷 4자리가 맞는 신청자만 모임 정보 열람','행사 후 비효율을 정리해 자동 집계·AI 분석 개선안 도출'],
+  `<img class="shot" src="img/yut_rsvp.jpg" alt="신청자 확인과 RSVP 입력 화면" loading="lazy" width="600" height="1298" ><p class="cap" style="text-align:center">입력값은 예시예요 · Forms · Sheets · Apps Script · Lovable · GitHub</p>`)]}
+];
+function slideHTML(s){const txt=`<div><div class="st">${s.stage}</div><h3>${s.title}</h3>${s.items.length?`<ul>${s.items.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}${s.note?`<p class="note">${s.note}</p>`:''}</div>`;return `<div class="sl ${s.vis?'':'one'}">${txt}${s.vis?`<div class="vis">${s.vis}</div>`:''}</div>`;}
+function mount(root,DATA,split){
+ root.innerHTML=`<div class="grid">${DATA.map((e,i)=>`<button class="ex" type="button" aria-expanded="false" data-i="${i}"><span class="d">${e.d}</span><span class="o">${split?e.o.replace(' · ','<br>'):e.o}</span><span class="r">${e.r}</span><span class="m">${e.m}</span><span class="more"><span class="lab">자세히 보기</span><span>↓</span></span></button>`).join('')}</div><div class="panel" hidden><div class="ph"><div><b class="pt"></b><small class="pd"></small></div><span class="pill pm"></span></div><div class="track" tabindex="0" aria-live="polite"></div><div class="pf"><button class="nb pv" type="button">← 이전</button><div class="dots"></div><button class="nb nx" type="button">다음 →</button></div></div>`;
+ const panel=root.querySelector('.panel'),track=root.querySelector('.track'),dots=root.querySelector('.dots'),prev=root.querySelector('.pv'),next=root.querySelector('.nx');
+ let cur=-1,idx=0;
+ const setDots=()=>{const n=DATA[cur].slides.length;dots.innerHTML=Array.from({length:n},(_,k)=>`<i class="${k===idx?'on':''}"></i>`).join('')+`<span>${idx+1} / ${n}</span>`;prev.disabled=idx===0;next.disabled=idx===n-1;};
+ const go=k=>{const n=DATA[cur].slides.length;idx=Math.max(0,Math.min(n-1,k));track.scrollTo({left:track.clientWidth*idx,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});setDots();};
+ const open=i=>{
+  root.querySelectorAll('.ex').forEach(b=>{const on=+b.dataset.i===i&&cur!==i;b.setAttribute('aria-expanded',on);b.querySelector('.lab').textContent=on?'슬라이드 보는 중':'자세히 보기';});
+  if(cur===i){cur=-1;panel.hidden=true;return;}
+  cur=i;idx=0;const e=DATA[i];
+  root.querySelector('.pt').textContent=e.o;root.querySelector('.pd').textContent=e.d;root.querySelector('.pm').textContent=e.m;
+  track.innerHTML=e.slides.map(slideHTML).join('');panel.hidden=false;track.scrollLeft=0;setDots();
+  root.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});};
+ root.addEventListener('click',ev=>{const b=ev.target.closest('.ex');if(b)open(+b.dataset.i);});
+ prev.addEventListener('click',()=>go(idx-1));next.addEventListener('click',()=>go(idx+1));
+ track.addEventListener('keydown',ev=>{if(ev.key==='ArrowRight')go(idx+1);if(ev.key==='ArrowLeft')go(idx-1);});
+ let st;track.addEventListener('scroll',()=>{clearTimeout(st);st=setTimeout(()=>{const k=Math.round(track.scrollLeft/track.clientWidth);if(k!==idx){idx=k;setDots();}},80);});
+}
+mount(document.querySelector('[data-group=career]'),EX,true);
+mount(document.querySelector('[data-group=projects]'),PJ);
+/* deck modal */
+const dlg=document.getElementById('deck'),dtrack=document.getElementById('dtrack'),dd=document.getElementById('ddots'),dn=document.getElementById('dn');
+dtrack.innerHTML=Array.from({length:13},(_,k)=>`<img src="slides/s${String(k+1).padStart(2,'0')}.jpg" alt="포트폴리오 슬라이드 ${k+1}" loading="lazy" width="1440" height="810">`).join('');
+let di=0;function dset(){dd.innerHTML=Array.from({length:13},(_,k)=>`<i class="${k===di?'on':''}"></i>`).join('');dn.textContent=di+1;document.getElementById('dprev').disabled=di===0;document.getElementById('dnext').disabled=di===12;}
+function dgo(k){di=Math.max(0,Math.min(12,k));dtrack.scrollTo({left:dtrack.clientWidth*di,behavior:'smooth'});dset();}
+document.getElementById('openDeck').addEventListener('click',()=>{try{dlg.showModal();}catch(e){dlg.setAttribute('open','');}di=0;dtrack.scrollLeft=0;dset();});
+document.getElementById('dclose').addEventListener('click',()=>dlg.close());
+document.getElementById('dprev').addEventListener('click',()=>dgo(di-1));document.getElementById('dnext').addEventListener('click',()=>dgo(di+1));
+dlg.addEventListener('keydown',ev=>{if(ev.key==='ArrowRight')dgo(di+1);if(ev.key==='ArrowLeft')dgo(di-1);});
+dlg.addEventListener('click',ev=>{if(ev.target===dlg)dlg.close();});
+let dt;dtrack.addEventListener('scroll',()=>{clearTimeout(dt);dt=setTimeout(()=>{const k=Math.round(dtrack.scrollLeft/dtrack.clientWidth);if(k!==di){di=k;dset();}},80);});
+}
+</script>
+</body>
+</html>
