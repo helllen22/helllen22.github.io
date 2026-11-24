@@ -107,26 +107,43 @@ h2{font-family:var(--serif);font-size:clamp(28px,3.4vw,40px);line-height:1.2;mar
 .flow span{background:var(--bg2);border-radius:12px;padding:8px 14px;font-weight:700;font-size:14px}
 .flow span.on{background:var(--burbg);color:#fff}.flow em{color:var(--n2);font-style:normal}
 .contact .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
-.contact h2{margin:0}.contact .ln{text-align:right;font-size:18px;font-weight:700;line-height:1.8}
+.contact h2{margin:0}.contact .ln{text-align:right;font-size:13px;font-weight:700;line-height:1.8}
 footer{border-top:1px solid var(--line);padding:22px 0;font-size:13px;color:var(--mute)}
-dialog{border:0;padding:0;border-radius:22px;width:min(1100px,94vw);background:var(--card);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog{border:0;padding:0;border-radius:22px;width:min(1100px,94vw,calc((94vh - 190px) * 16 / 9));max-height:96vh;overflow:clip;background:var(--card);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog .dtrack img{width:100%;min-width:100%;height:auto;display:block}
 dialog::backdrop{background:rgba(23,21,26,.6)}
-.dh{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);font-weight:700}
+.df{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 22px 16px;border-top:1px solid var(--line)}
+.skip{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--mute);cursor:pointer;min-height:44px}
+.skip input{width:18px;height:18px;accent-color:var(--bur)}
+.dc{background:var(--burbg);color:#fff;border-color:var(--burbg)}
+#ddots i{cursor:pointer;width:9px;height:9px}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:8px 14px 8px 20px;border-bottom:1px solid var(--line);font-weight:700}
 .dh .x{font:inherit;font-size:20px;background:none;border:0;color:var(--ink);cursor:pointer;width:44px;height:44px}
-.dtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;background:#111;scrollbar-width:none}
+.dtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;background:var(--bg2);scrollbar-width:none}
 .dtrack img{flex:0 0 100%;scroll-snap-align:start;width:100%;aspect-ratio:16/9;object-fit:contain}
 
-.sl{height:340px;min-height:0;padding:24px 36px;gap:32px;overflow:hidden}
+.sl{height:400px;min-height:0;padding:24px 36px;gap:32px;overflow:hidden}
 .sl h3{font-size:21px;margin:4px 0 10px}
 .sl li{margin:4px 0;font-size:15px;line-height:1.55}
 .vis{padding:16px 18px;max-height:100%;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.vis .vimg{max-height:300px;border:0;background:none}
 .vis .shot{max-height:236px;width:auto;max-width:100%;object-fit:contain;margin:0 auto}
-.vis .big{font-size:34px}
+.vis .big{font-size:34px}.vis .big.sm{font-size:29px}.vis .fin .kv b{font-size:13px}.vis .fin .kv span{font-size:12px}
 .vis .bar{margin:6px 0}.vis .bar div{height:24px}.vis .bar div em{top:2px;font-size:13px}
 .vis .kv{margin-top:8px}.vis .kv div{padding:8px 12px}.vis .kv b{font-size:18px}
 .vis .steps div{padding:7px 9px}.vis .steps div b{font-size:14px}
 .vis .cap{margin-top:6px}
-.ph{padding:12px 22px}.pf{padding:6px 22px}
+.ph{padding:12px 22px}
+.sl.ev{grid-template-columns:minmax(0,170px) minmax(0,1fr);gap:16px;padding:8px 16px 8px 32px}
+.sl.ev h3{font-size:19px}
+.sl.wi{grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:20px;padding:8px 16px 8px 32px}
+.sl.wi .vis{padding:0;background:none;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.sl.wi .vis .shot{max-height:370px;width:auto;max-width:100%;flex:none;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+@media(max-width:860px){.sl.wi{grid-template-columns:minmax(0,1fr)}}
+.sl.ev .vis{padding:0;background:none;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:hidden}
+.sl.ev .vis .cap{margin-top:6px;flex:none}
+.sl.ev .vis .shot{max-height:350px;flex:none;width:auto;max-width:100%;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+@media(max-width:860px){.sl.ev{grid-template-columns:minmax(0,1fr)}}.pf{padding:6px 22px}
 .ex{min-height:100%}
 @media(max-width:860px){.sl{height:auto;min-height:0}.vis .shot{max-height:260px}}
 @media(max-width:860px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.sl{grid-template-columns:minmax(0,1fr)}.side{grid-template-columns:minmax(0,1fr)}.side img{max-width:240px;margin:0 auto}}
@@ -154,7 +171,7 @@ dialog::backdrop{background:rgba(23,21,26,.6)}
 <div>
 <h1>사람을 이해하는 운영,<br>데이터와 AI로 완성하다.</h1>
 <p>교육 현장과 고객경험 운영에서 쌓은 사람에 대한 이해를,<br>데이터와 AI로 기준을 세우는 힘으로 바꿔 왔습니다.</p>
-<div class="tags"><span class="tag">Apple · Kia 고객경험 운영</span><span class="tag">공동창업 · 운영이사</span><span class="tag">AI 데이터 품질 프로젝트</span></div>
+<div class="tags"><span class="tag">Apple · Kia 고객경험 운영</span><span class="tag">공동창업 · 운영이사</span><span class="tag">AI Agent 기반 데이터 품질 자동화</span></div>
 </div>
 </div></section>
 
@@ -174,14 +191,15 @@ dialog::backdrop{background:rgba(23,21,26,.6)}
 
 <section class="band contact" id="contact" style="border-top:1px solid var(--line)"><div class="wrap">
 <div><p class="kick">Contact</p><h2>이찬미</h2><p class="lead" style="margin:4px 0 0">교육 · 고객경험 운영 · 데이터 분석 · AI 활용</p></div>
-<div class="ln"><a href="mailto:dl4157@naver.com">dl4157@naver.com</a><br>010-4449-1444</div>
+<div class="ln"><a href="mailto:dl4157@naver.com">dl4157@naver.com</a><br>010-4449-1444<br><a href="https://leechanmi.netlify.app/" target="_blank" rel="noopener">leechanmi.netlify.app</a></div>
 </div></section>
 
-<footer><div class="wrap">© 2026 이찬미. 수치는 이력서·경력기술서와 프로젝트 기록을 기준으로 했으며, 고객·참여자 개인정보는 포함하지 않았습니다.</div></footer>
+<footer><div class="wrap">© 이찬미. 포트폴리오</div></footer>
 
 <dialog id="deck"><div class="dh"><span>포트폴리오 프레젠테이션 · <span id="dn">1</span> / 13</span><button class="x" id="dclose" type="button" aria-label="닫기">✕</button></div>
 <div class="dtrack" id="dtrack"></div>
-<div class="pf"><button class="nb" id="dprev" type="button">← 이전</button><div class="dots" id="ddots"></div><button class="nb" id="dnext" type="button">다음 →</button></div></dialog>
+<div class="pf"><button class="nb" id="dprev" type="button">← 이전</button><div class="dots" id="ddots"></div><button class="nb" id="dnext" type="button">다음 →</button></div>
+<div class="df"><label class="skip"><input type="checkbox" id="dskip"> 오늘 하루 동안 보지 않기</label><button class="btn dc" id="dclose2" type="button">닫기</button></div></dialog>
 
 <script>
 {
@@ -190,47 +208,47 @@ const kv=(arr)=>`<div class="kv">${arr.map(([a,b])=>`<div><span>${a}</span><b>${
 const S=(stage,title,items,vis,note)=>({stage,title,items,vis,note});
 const EX=[
 {d:'2016.03 – 2020.02',o:'유아교육기관 · 부장교사',r:'300명 규모 교육과정과 학부모 소통',m:'만족도 4.7+',slides:[
- S('Situation','300명 규모 교육과정을 계획대로',['13개 학급 · 원아 약 300명 교육과정','연 40개 정규·특별 프로그램 운영','학부모의 다양한 요구에 일관된 대응 필요']),
+ S('Situation','300명 규모 교육과정을 계획대로',['13개 학급 · 원아 약 300명 교육과정','연 40개 정규·특별 프로그램 운영','학부모의 다양한 요구에 일관된 대응 필요'],`<img class="shot vimg" src="vis/t_scale.jpg" alt="학급·교사·프로그램 운영 규모" loading="lazy">`),
  S('Action','기준을 맞추고 사람 사이를 조율',['교사 20명의 업무·일정·역할 조율','운영 이슈 월 30건+ 점검으로 교사 간 기준 통일','정기 상담과 상시 소통, 이슈는 사실 확인 후 조율'],
   `<div class="st">학부모 만족도</div><div class="big">4.7+ <small style="font-size:20px;color:var(--mute)">/ 5.0</small></div>${bar([['만족도',4.7,5,1,'4.7']])}${kv([['학급','13개'],['조율한 교사','20명']])}`)]},
 {d:'2020.10 – 2023.05',o:'Good BM · 공동창업 · 운영이사',r:'문의·반품 데이터로 운영 사이클 구축',m:'처리 2일 → 1일',slides:[
- S('Situation','주문은 늘고, 반복 원인은 보이지 않던 때',['월 주문 약 800건 → 1,200건으로 증가','문의·반품·출고 지연 누적','개별 처리만으로는 반복 원인 파악이 어려움']),
- S('Action','분류하고, 원인을 찾고, 기준을 만들다',['문의·반품 데이터를 20개 카테고리로 분류해 반복 불편 도출','주문–생산–출고 병목 분석, 반복 업무·운영 기준 표준화','고객 피드백·재구매 현황으로 개선 과제 선정']),
+ S('Situation','주문은 늘고, 반복 원인은 보이지 않던 때',['월 주문 약 800건 → 1,200건으로 증가','문의·반품·출고 지연 누적','개별 처리만으로는 반복 원인 파악이 어려움'],`<img class="shot vimg" src="vis/g_slope.jpg" alt="주문량과 출고 지연 개선 전후 비교" loading="lazy">`),
+ S('Action','분류하고, 원인을 찾고, 기준을 만들다',['문의·반품 데이터를 20개 카테고리로 분류해 반복 불편 도출','주문–생산–출고 병목 분석, 반복 업무·운영 기준 표준화','고객 피드백·재구매 현황으로 개선 과제 선정'],`<img class="shot vimg" src="vis/g_cycle.jpg" alt="운영 사이클과 성과" loading="lazy">`),
  S('Result','주문 1.5배에도 지연은 절반으로',['제품·서비스 개선 5건 반영','생산비 약 10% 절감','누적 고객 약 1,000명 기준 재구매율 50~60% 유지'],
   `${bar([['주문 전',800,1200,0,'800건'],['주문 후',1200,1200,0,'1,200건'],['지연 전',20,20,0,'20건'],['지연 후',10,20,1,'10건']])}${kv([['주문~출고','2일 → 1일'],['월매출','약 3,000만원']])}`)]},
 {d:'2023.10 – 2024.12',o:'Apple Korea · Forum Team',r:'참여자별 니즈를 반영한 Learning Experience 운영',m:'CSAT 4.8+',slides:[
- S('Situation','목적이 다른 고객, 같은 품질의 경험',['일반 고객부터 교사까지 다양한 참여자','주 약 20회 교육 세션 운영','세션마다 일관된 고객경험 품질 유지 필요']),
- S('Action','데이터로 운영을 바꾸고 팀과 기준을 맞추다',['약 20개 프로그램의 참여 데이터를 주간·월간 집계 (약 80회)','매일 15분 Daily Download로 유관 팀과 대응 기준 정렬','16개국 Worldwide Meeting 연 약 25회, Vision Pro 5개국 교육 한국 대표']),
+ S('Situation','목적이 다른 고객, 같은 품질의 경험',['일반 고객부터 교사까지 다양한 참여자','주 약 20회 교육 세션 운영','세션마다 일관된 고객경험 품질 유지 필요'],`<img class="shot vimg" src="vis/a_gauge.jpg" alt="CSAT 4.8과 교사 만족도 5.0 게이지" loading="lazy">`),
+ S('Action','데이터로 운영을 바꾸고 팀과 기준을 맞추다',['약 20개 프로그램의 참여 데이터를 주간·월간 집계 (약 80회)','매일 15분 Daily Download로 유관 팀과 대응 기준 정렬','16개국 Worldwide Meeting 연 약 25회, Vision Pro 5개국 교육 한국 대표'],`<img class="shot vimg" src="vis/a_tiles.jpg" alt="누적 세션·고객·리포팅·개선 건수" loading="lazy">`),
  S('Result','누적 1,300회 세션, 6,500명+ 고객',['데이터와 현장 피드백으로 운영 개선 8건 반영','교육청 승인 교사 약 200명 대상 10차시 프로그램 운영'],
   `${bar([['CSAT',4.8,5,1,'4.8+'],['교사',5,5,0,'5.0']])}${kv([['누적 세션','약 1,300회'],['누적 고객','6,500명+']])}`)]},
 {d:'2025.06 – 2026.06',o:'Kia · 국내사업본부 CPO사업팀',r:'반복 VOC 유형화와 신규 고객 접점 설계',m:'4.2일 → 1일',slides:[
- S('Situation','본사로 넘어온 VOC, 길어지는 처리',['1차 고객센터 미해결 VOC 월평균 약 85건 본사 이관','이관 VOC의 30% 이상 추가 확인 필요, 처리 약 4.2일','평택 CXP 개소(2025.11)를 앞두고 운영 흐름 부재']),
- S('Action','4개 유형과 체크리스트로 처리 기준을',['반복 VOC를 환불·탁송·차량상태·계약/결제 4개 유형으로 분류','유형별 필수 확인항목 체크리스트 정리','고객·계약·차량·현장 정보를 교차 확인하고 유관부서와 조율해 직접 안내','예약 → 차량 준비 → 방문 → 상담 단계별 업무 흐름 구축'],'', '별도 업무로 결제대기 고객 데이터를 매일 확인·보고하고, 원천 데이터 오류를 정비해 임원 보고에 반영했습니다 (2026.04).'),
+ S('Situation','본사로 넘어온 VOC, 길어지는 처리',['1차 고객센터 미해결 VOC 월평균 약 85건 본사 이관','이관 VOC의 30% 이상 추가 확인 필요, 처리 약 4.2일','평택 CXP 개소(2025.11)를 앞두고 운영 흐름 부재'],`<img class="shot vimg" src="vis/k_funnel.jpg" alt="VOC 처리 흐름 깔때기" loading="lazy">`),
+ S('Action','4개 유형과 체크리스트로 처리 기준을',['반복 VOC를 환불·탁송·차량상태·계약/결제 4개 유형으로 분류','유형별 필수 확인항목 체크리스트 정리','고객·계약·차량·현장 정보를 교차 확인하고 유관부서와 조율해 직접 안내','예약 → 차량 준비 → 방문 → 상담 단계별 업무 흐름 구축'],`<img class="shot vimg" src="vis/c_journey.jpg" alt="평택 CXP 고객 여정" loading="lazy">`, '별도 업무로 결제대기 고객 데이터를 매일 확인·보고하고, 원천 데이터 오류를 정비해 임원 보고에 반영했습니다 (2026.04).'),
  S('Result','처리는 빨라지고, 예약은 늘다',['추가 확인 건 평균 처리기간 단축','평택 CXP 월 방문 예약 12배','차량 미준비·일정 누락 주 4~5건 → 0~1건'],
   `${bar([['처리 전',4.2,4.2,0,'4.2일'],['처리 후',1,4.2,1,'1일'],['예약 전',10,120,0,'10건'],['예약 후',120,120,1,'120건']])}`)]},
 ];
 const PJ=[
 {d:'2026.10 – 2026.11',o:'오호라 네일 트렌드 AI 태깅 · 주간 리포트 자동화',r:'엘리스 AI 부트캠프 · 팀장 · 태깅·모델 담당',m:'적합률 5% → 78%',slides:[
- S('Situation','AI 분류 결과를 믿을 기준이 없었다',['SNS 네일 사진(실제 수집 97개 계정)을 AI로 분류','사람과 모델의 판정이 달라 결과 신뢰도 검증 필요']),
+ S('Situation','AI 분류 결과를 믿을 기준이 없었다',['SNS 네일 사진(실제 수집 97개 계정)을 AI로 분류','사람과 모델의 판정이 달라 결과 신뢰도 검증 필요'],`<img class="shot vimg" src="vis/n_pipe.jpg" alt="팀 파이프라인 전체 흐름" loading="lazy">`),
  S('Action','정답셋과 판정 기준을 만들다',['2인 교차 판정으로 정답셋 324건 구축','프롬프트 v1 → v5 개선','채택 기준: 재현율 유지 · 정밀도 하락 2%p 이내','주요 오류 원인: 마그넷 · 오로라 · 시럽 간 경계 모호 → 불일치 사례 분석 → 판정 기준 보완 → v5 반영'],
-  `<div class="st">전체 흐름 · 팀 파이프라인</div><div class="steps" style="margin-top:10px"><div><b>수집</b>공개 게시물</div><div><b>정리</b>중복 제거</div><div class="me"><b>사진 태깅</b>컬러 × 디자인</div><div class="me"><b>판정 반영</b>사람이 덮어쓰기</div><div class="me"><b>대표 사진 검수</b>월요일 15~30분</div><div><b>순위 계산</b>계정 비율 7%+</div><div><b>리포트</b>Top 5 · 급상승</div><div><b>메일 발송</b>09:00</div></div><p class="cap">버건디 테두리가 맡은 단계예요.</p>`),
+  `<div class="st">전체 흐름 · 팀 파이프라인</div><div class="steps" style="margin-top:10px"><div><b>수집</b>공개 게시물</div><div><b>정리</b>중복 제거</div><div class="me"><b>사진 태깅</b>컬러 × 디자인</div><div class="me"><b>판정 반영</b>사람이 덮어쓰기</div><div class="me"><b>대표 사진 검수</b>월요일 15~30분</div><div><b>순위 계산</b>계정 비율 7%+</div><div><b>리포트</b>Top 5 · 급상승</div><div><b>메일 발송</b>09:00</div></div>`),
  S('Result','대표 사진 100건 내부 검수 적합률',['v4 5% → v5 78%, 사전에 정한 통과 기준 70% 달성'],
-  `<div class="big">5% → 78%</div>${bar([['v4',5,100,0,'5%'],['v5',78,100,1,'78%']])}<p class="cap">통과 기준 70% · 모델 정확도가 아닌 사람 검수 적합률</p>`),
- S('Evidence','사람이 AI 판정을 검수하는 화면',[],`<img class="shot" src="img/review.jpg" alt="대표 사진 검수 페이지 화면 — 네일 사진은 예시 이미지" loading="lazy" width="1600" height="1015"><p class="cap">네일 사진은 원본 자료 대신 넣은 포트폴리오용 예시 이미지입니다.</p>`),
- S('Evidence','매주 월요일 받아 보는 트렌드 리포트',[],`<img class="shot" src="img/report.jpg" alt="주간 트렌드 리포트 화면" loading="lazy" width="1000" height="1145"><p class="cap">리포트는 팀 결과물이에요.</p>`),
- S('Evidence','결과는 매주 리포트와 대시보드로',[],`<img class="shot" src="img/dashboard.jpg" alt="트렌드 대시보드 화면 — 네일 사진은 예시 이미지" loading="lazy" width="1800" height="1125"><p class="cap">리포트·대시보드는 팀 결과물이며, 네일 사진은 포트폴리오용 예시 이미지입니다.</p>`)]},
+  `<div class="big sm">5% → 78%</div>${bar([['v4',5,100,0,'5%'],['v5',78,100,1,'78%']])}<p class="cap">통과 기준 70% · 모델 정확도가 아닌 사람 검수 적합률</p>`),
+ S('Evidence','사람이 AI 판정을 검수하는 화면',[],`<img class="shot" src="img/review.jpg" alt="대표 사진 검수 페이지 화면" loading="lazy" width="1600" height="1015">`),
+ S('Evidence','매주 월요일 받아 보는 트렌드 리포트',[],`<img class="shot" src="img/report.jpg" alt="주간 트렌드 리포트 화면" loading="lazy" width="1000" height="1145"><p class="cap">팀 결과물 · 매주 월요일 자동 발송</p>`),
+ S('Evidence','결과는 매주 리포트와 대시보드로',[],`<img class="shot" src="img/dashboard.jpg" alt="트렌드 대시보드 화면" loading="lazy" width="1800" height="1125"><p class="cap">팀 결과물 · 주간 트렌드 대시보드</p>`)]},
 {d:'2026.09',o:'금융 상담 고객의 추가 상품 가입 예측 · 우선 상담군 선별',r:'엘리스 AI 부트캠프 · 개인 프로젝트 · 20명 중 1위',m:'Recall 0.19 → 0.52',slides:[
- S('Situation','먼저 상담할 고객을 고르는 기준',['추가 상품 가입 가능성이 높은 고객을 우선 선별할 기준 필요','283건 상담 데이터, 클래스 불균형']),
+ S('Situation','먼저 상담할 고객을 고르는 기준',['추가 상품 가입 가능성이 높은 고객을 우선 선별할 기준 필요','283건 상담 데이터, 클래스 불균형'],`<div class="fin"><div class="st">분석 대상</div><div class="big sm">283건</div>${kv([['클래스 불균형','가입 고객 소수'],['목표','우선 상담군 선별'],['평가 지표','Recall · F1'],['결과','상위 25% 71명']])}</div>`),
  S('Action','성능을 올리고, 스스로 의심하다',['EDA → 가설 → 모델링 → 인사이트, 가설 3~4회 재설계','클래스 불균형 보정 (Recall 0.19 → 0.52, F1 0.27 → 0.49)','정답 단서 키워드를 지워 누수 검증 (최종 Recall 0.43 · F1 0.44)','성별 편향이 드러난 군집 모델은 기각'],
   `<img class="shot" src="img/cs_weight.jpg" alt="클래스 가중치 적용 전후 성능 비교 슬라이드" loading="lazy" width="1400" height="788">`),
  S('Result','상위 25% 71명을 우선 상담군으로',['점수는 구매 확률이 아니라 상담 우선순위로 해석 범위 명시','20명 중 개별 프로젝트 최종 평가 1위'],
   `<img class="shot" src="img/cs_leak.jpg" alt="타깃 누수 검증 슬라이드" loading="lazy" width="1400" height="788"><p class="cap">최종 발표 자료 · Python · Pandas · 로지스틱 회귀</p>`)]},
 {d:'Side project',o:'오프라인 모임 신청 · RSVP 자동화 시스템',r:"사이드 프로젝트 '윷자' · 기획부터 구축까지 1인",m:'수기 관리 → 자동 저장',slides:[
- S('Situation','흩어진 도구, 수작업으로 돌던 운영',['신청·선정·안내·참석 확인이 여러 도구에 흩어짐','참석 여부와 입금 상태를 일일이 수기로 관리']),
+ S('Situation','흩어진 도구, 수작업으로 돌던 운영',['신청·선정·안내·참석 확인이 여러 도구에 흩어짐','참석 여부와 입금 상태를 일일이 수기로 관리'],`<img class="shot vimg" src="vis/y_flow.jpg" alt="신청부터 RSVP까지 운영 흐름" loading="lazy">`),
  S('Action','신청부터 RSVP까지 한 흐름으로',['Google Forms 신청 → Sheets 선정 → 초대 웹페이지 → RSVP·입금 상태 저장','Apps Script로 이름·휴대폰 뒷 4자리가 맞는 신청자만 모임 정보 열람','행사 후 비효율을 정리해 자동 집계·AI 분석 개선안 도출'],
-  `<img class="shot" src="img/yut_rsvp.jpg" alt="신청자 확인과 RSVP 입력 화면" loading="lazy" width="600" height="1298" ><p class="cap" style="text-align:center">입력값은 예시예요 · Forms · Sheets · Apps Script · Lovable · GitHub</p>`)]}
+  `<img class="shot" src="img/yut_rsvp.jpg" alt="신청자 확인과 RSVP 입력 화면" loading="lazy" width="600" height="1298" ><p class="cap" style="text-align:center">Forms · Sheets · Apps Script · Lovable · GitHub</p>`)]}
 ];
-function slideHTML(s){const txt=`<div><div class="st">${s.stage}</div><h3>${s.title}</h3>${s.items.length?`<ul>${s.items.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}${s.note?`<p class="note">${s.note}</p>`:''}</div>`;return `<div class="sl ${s.vis?'':'one'}">${txt}${s.vis?`<div class="vis">${s.vis}</div>`:''}</div>`;}
+function slideHTML(s){const txt=`<div><div class="st">${s.stage}</div><h3>${s.title}</h3>${s.items.length?`<ul>${s.items.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}${s.note?`<p class="note">${s.note}</p>`:''}</div>`;return `<div class="sl ${s.vis?'':'one'} ${s.stage==='Evidence'?'ev':(s.vis&&s.vis.includes('img/cs_')?'wi':'')}">${txt}${s.vis?`<div class="vis">${s.vis}</div>`:''}</div>`;}
 function mount(root,DATA,split){
  root.innerHTML=`<div class="grid">${DATA.map((e,i)=>`<button class="ex" type="button" aria-expanded="false" data-i="${i}"><span class="d">${e.d}</span><span class="o">${split?e.o.replace(' · ','<br>'):e.o}</span><span class="r">${e.r}</span><span class="m">${e.m}</span><span class="more"><span class="lab">자세히 보기</span><span>↓</span></span></button>`).join('')}</div><div class="panel" hidden><div class="ph"><div><b class="pt"></b><small class="pd"></small></div><span class="pill pm"></span></div><div class="track" tabindex="0" aria-live="polite"></div><div class="pf"><button class="nb pv" type="button">← 이전</button><div class="dots"></div><button class="nb nx" type="button">다음 →</button></div></div>`;
  const panel=root.querySelector('.panel'),track=root.querySelector('.track'),dots=root.querySelector('.dots'),prev=root.querySelector('.pv'),next=root.querySelector('.nx');
@@ -254,13 +272,18 @@ mount(document.querySelector('[data-group=projects]'),PJ);
 /* deck modal */
 const dlg=document.getElementById('deck'),dtrack=document.getElementById('dtrack'),dd=document.getElementById('ddots'),dn=document.getElementById('dn');
 dtrack.innerHTML=Array.from({length:13},(_,k)=>`<img src="slides/s${String(k+1).padStart(2,'0')}.jpg" alt="포트폴리오 슬라이드 ${k+1}" loading="lazy" width="1440" height="810">`).join('');
-let di=0;function dset(){dd.innerHTML=Array.from({length:13},(_,k)=>`<i class="${k===di?'on':''}"></i>`).join('');dn.textContent=di+1;document.getElementById('dprev').disabled=di===0;document.getElementById('dnext').disabled=di===12;}
-function dgo(k){di=Math.max(0,Math.min(12,k));dtrack.scrollTo({left:dtrack.clientWidth*di,behavior:'smooth'});dset();}
-document.getElementById('openDeck').addEventListener('click',()=>{try{dlg.showModal();}catch(e){dlg.setAttribute('open','');}di=0;dtrack.scrollLeft=0;dset();});
-document.getElementById('dclose').addEventListener('click',()=>dlg.close());
+let di=0;function dset(){dd.innerHTML=Array.from({length:13},(_,k)=>`<i class="${k===di?'on':''}" data-k="${k}" role="button" aria-label="슬라이드 ${k+1}"></i>`).join('');dn.textContent=di+1;document.getElementById('dprev').disabled=di===0;document.getElementById('dnext').disabled=di===12;}
+function dgo(k){di=Math.max(0,Math.min(12,k));const im=dtrack.children[di];dtrack.scrollTo({left:im?im.offsetLeft:dtrack.clientWidth*di,behavior:'smooth'});dset();}
+function openDeck(){try{dlg.showModal();}catch(e){dlg.setAttribute('open','');}di=0;dtrack.scrollLeft=0;dset();}
+function closeDeck(){if(document.getElementById('dskip').checked){try{localStorage.setItem('deckHideUntil',String(Date.now()+864e5));}catch(e){}}dlg.close();}
+document.getElementById('openDeck').addEventListener('click',openDeck);
+document.getElementById('dclose').addEventListener('click',closeDeck);document.getElementById('dclose2').addEventListener('click',closeDeck);
+dd.addEventListener('click',ev=>{const t=ev.target.closest('[data-k]');if(t)dgo(+t.dataset.k);});
+let hide=0;try{hide=+localStorage.getItem('deckHideUntil')||0;}catch(e){}
+if(Date.now()>hide){openDeck();dtrack.querySelectorAll('img').forEach((im,i)=>{if(i<2)im.loading='eager';});}
 document.getElementById('dprev').addEventListener('click',()=>dgo(di-1));document.getElementById('dnext').addEventListener('click',()=>dgo(di+1));
 dlg.addEventListener('keydown',ev=>{if(ev.key==='ArrowRight')dgo(di+1);if(ev.key==='ArrowLeft')dgo(di-1);});
-dlg.addEventListener('click',ev=>{if(ev.target===dlg)dlg.close();});
+dlg.addEventListener('click',ev=>{if(ev.target===dlg)closeDeck();});
 let dt;dtrack.addEventListener('scroll',()=>{clearTimeout(dt);dt=setTimeout(()=>{const k=Math.round(dtrack.scrollLeft/dtrack.clientWidth);if(k!==di){di=k;dset();}},80);});
 }
 </script>
